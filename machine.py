@@ -63,7 +63,7 @@ class InstructionSetReader:
 				if negate:
 					return 0 - self.registers[reg]
 				else:
-					self.registers[reg]
+					return self.registers[reg]
 		else:
 			if negate:
 				return 0 - int(num_str)
