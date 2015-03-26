@@ -194,7 +194,7 @@ class InstructionSetReader:
 		def __pass(): print("[undefined action]")
 		for i in self.fh:
 			i = i.strip()
-			if re.match('$', i): continue
+			if re.match('\s*$', i): continue
 			if not read_cfg:
 				if re.match('INSTRUCTIONS:', i):
 					read_cfg = True
