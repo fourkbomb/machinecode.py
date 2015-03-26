@@ -230,14 +230,14 @@ class InstructionSetReader:
 				self.instructions[num] = res_lambda
 
 	def execute(self, instr):
-			self.program = list(map(int, instr))
-			self.instructionPointer = 0
-			while self.instructionPointer < len(instr):
-				#print(instr[self.instructionPointer])
-				self.instructions[int(instr[self.instructionPointer])]()
-				#print(self.registers)
-				self.instructionPointer += 1
-				self.instructionPointer %= self._max_byte_val()
+		self.program = list(map(int, instr))
+		self.instructionPointer = 0
+		while self.instructionPointer < len(instr):
+			#print(instr[self.instructionPointer])
+			self.instructions[int(instr[self.instructionPointer])]()
+			#print(self.registers)
+			self.instructionPointer += 1
+			self.instructionPointer %= self._max_byte_val()
 			
 			#print(self.registers)
 if __name__ == '__main__':
@@ -252,9 +252,10 @@ if __name__ == '__main__':
 	isr = InstructionSetReader(instr)
 	isr.parse()
 	with open(args.file) as prog:
-		code = list(map(int, ' '.join(prog.readlines()).split()))
+		code = ' '.join(prog.readlines()).split()
 		print(code)
 		isr.execute(code)
+	instr.close()
 
 
 
